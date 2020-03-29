@@ -1,13 +1,12 @@
 {
   "name": "gatsby-source-simplecast",
-  "version": "2.4.0",
+  "version": "2.4.1",
   "description": "Gatsby plugin to load podcast episodes from Simplecast.",
   "main": "index.js",
   "scripts": {
     "build": "babel src --out-dir . --ignore **/__tests__",
     "watch": "babel -w src --out-dir . --ignore **/__tests__",
     "dev": "cross-env NODE_ENV=development yarn watch",
-    "prepare": "cross-env NODE_ENV=production yarn build",
     "test": "echo \"Error: no test specified\""
   },
   "keywords": [
