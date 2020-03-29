@@ -33,7 +33,7 @@ class Simplecast {
     });
   };
 
-  getEpisode = episodeId => {
+  getEpisode = async episodeId => {
     if (!episodeId) {
       throw Error('No episode ID provided.');
     }
@@ -51,15 +51,18 @@ class Simplecast {
   };
 
   getEpisodes = (limit = 10) => {
-    return this.request(
+    try {
+    const request = await this.request(
       `podcasts/${this.podcastId}/episodes?limit=${
         typeof limit === 'number' ? limit : 10
       }`
     )
-      .then(res => res.json())
-      .then(info => info.collection)
-      .then(data => camelCaseKeys(data, { deep: true }))
-      .catch(console.error);
+    const json = await request.json();
+    const info = await json.collection();
+    return camelCaseKeys(info, {deep: true}))
+    } catch(e) {
+      console.error(e)
+    }
   };
 }
 
