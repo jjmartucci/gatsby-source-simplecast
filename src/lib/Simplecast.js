@@ -39,7 +39,7 @@ class Simplecast {
     }
     try {
       const request = await this.request(`episodes/${episodeId}`);
-      const json = wait request.json();
+      const json = await request.json();
       return camelCaseKeys(json, { deep: true })
     } catch(e) {
       console.error(e);
@@ -61,7 +61,7 @@ class Simplecast {
       }`
     )
     const json = await request.json();
-    const info = await json.collection();
+    const info = await json.collection;
     return camelCaseKeys(info, {deep: true})
     } catch(e) {
       console.error(e)
