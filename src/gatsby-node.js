@@ -36,9 +36,9 @@ exports.sourceNodes = async (
     Promise.all(episodeDetails).then((res) => {
       res.map(episode => PodcastEpisodeNode(episode))
       .forEach(node => createNode(node));
+      setPluginStatus({ lastFetched: Date.now() });
     });
 
-    setPluginStatus({ lastFetched: Date.now() });
   } catch (err) {
     console.error('FAIL:', err);
   }
