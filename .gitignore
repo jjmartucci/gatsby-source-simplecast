@@ -16,6 +16,7 @@ package-lock.json
 /**/*.js
 !/src/**/*.js
 !index.js
+!lib/**
 
 # dev config files
 !.eslintrc.js
